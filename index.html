@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="RepStateDiff: Representation-Guided State Evolution for Image-Conditioned Point Cloud Reconstruction.">
+  <title>RepStateDiff | Image-Conditioned Point Cloud Reconstruction</title>
+  <link rel="stylesheet" href="./styles.css">
+  <link rel="icon" href="./favicon.svg" type="image/svg+xml">
+</head>
+<body>
+  <header class="hero" id="top">
+    <div class="hero-inner">
+      <p class="eyebrow">Under double-blind review at ICLR 2027</p>
+      <h1>RepStateDiff: Representation-Guided State Evolution for Image-Conditioned Point Cloud Reconstruction</h1>
+      <p class="authors">Anonymous authors</p>
+      <div class="hero-actions" aria-label="Project links">
+        <a class="action action-primary" id="code-link" href="https://anonymous.4open.science/r/RepStateDiff" target="_blank" rel="noreferrer">
+          <svg class="github-icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 .5a12 12 0 0 0-3.79 23.39c.6.11.82-.26.82-.58v-2.04c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.75.08-.74.08-.74 1.2.09 1.84 1.24 1.84 1.24 1.07 1.83 2.8 1.3 3.48.99.11-.77.42-1.3.76-1.6-2.67-.3-5.47-1.34-5.47-5.95 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.52.12-3.17 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6.01 0c2.29-1.55 3.3-1.23 3.3-1.23.66 1.65.24 2.87.12 3.17.77.84 1.24 1.91 1.24 3.22 0 4.62-2.81 5.65-5.49 5.94.43.37.81 1.1.81 2.22v3.29c0 .32.22.69.83.57A12 12 0 0 0 12 .5Z"/></svg>
+          <span>Code</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="section overview-section" id="overview" aria-labelledby="overview-title">
+      <div class="narrow-width">
+        <p class="section-kicker">Overview</p>
+        <h2 id="overview-title">Representation guidance for state-evolution denoising</h2>
+        <p class="lead">Single-view 3D reconstruction seeks to recover complete object geometry from a single RGB image, yet remains inherently ambiguous because the observation reveals only a partial, viewpoint-dependent surface. Diffusion models offer a flexible generative formulation for this task, but point-cloud denoising requires a coherent global shape hypothesis that can be selectively updated with local image evidence.</p>
+        <p>To address this challenge, we introduce <strong>RepStateDiff</strong>, a representation-guided conditional diffusion framework that formulates reconstruction as state-evolution denoising. By separating persistent shape retention from evidence-driven state updates, RepStateDiff preserves global structure while refining local geometry with image-aligned cues. It aligns frozen visual features with noisy 3D points and propagates hierarchical tokens through StateEvo, a linear-time sequence mixer; intermediate representation alignment and internal guidance further couple visual semantics to denoising.</p>
+        <p>On ShapeNet-R2N2 and Pix3D, RepStateDiff achieves the strongest F1-scores across most evaluated settings and remains robust even with merely 1% of training data. On the three primary ShapeNet-R2N2 categories at 10% training data, it improves mean CD/F1 over PDM from 66.09/0.525 to 56.34/0.582, while PDM retains faster inference.</p>
+      </div>
+    </section>
+
+    <section class="section figure-section" aria-labelledby="figure-one-title">
+      <div class="content-width">
+        <div class="section-heading">
+          <h2 id="figure-one-title">Quality and efficiency under data scarcity</h2>
+        </div>
+        <figure class="paper-figure figure-one">
+          <img src="./assets/paper-figures/figure1.png" alt="Quality and efficiency comparison of point-cloud reconstruction methods on ShapeNet-R2N2">
+          <figcaption>Figure 1. Absolute quality--efficiency comparison on ShapeNet-R2N2 with 10% training data. RepStateDiff is highlighted in red.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="visual-band" id="qualitative" aria-label="Qualitative reconstruction">
+      <div class="content-width">
+        <div class="section-heading section-heading-row">
+          <div>
+            <p class="section-kicker">Qualitative reconstruction</p>
+          </div>
+          <button class="replay-button" type="button" data-replay-all>
+            <span class="replay-icon" aria-hidden="true">&#8635;</span>
+            <span>Replay all</span>
+          </button>
+        </div>
+        <div class="dataset-block" aria-labelledby="r2n2-title">
+          <div class="dataset-heading"><h3 id="r2n2-title">ShapeNet-R2N2</h3></div>
+          <div class="comparison-board">
+            <div class="comparison-column-head" aria-hidden="true"><span>Input</span><span>BDM</span><span>MESC-3D</span><span>RepStateDiff</span><span>Ground Truth</span></div>
+            <div class="comparison-row">
+              <div class="category-label">Airplane</div>
+              <div class="media-cell"><img src="./assets/comparisons/r2n2/airplane/input.png" alt="Airplane input image"></div>
+              <div class="media-cell"><img data-sync-image data-src="./assets/comparisons/r2n2/airplane/bdm.gif" src="./assets/comparisons/r2n2/airplane/bdm.gif" alt="Airplane reconstruction from BDM"></div>
+              <div class="media-cell"><img data-sync-image data-src="./assets/comparisons/r2n2/airplane/mesc3d.gif" src="./assets/comparisons/r2n2/airplane/mesc3d.gif" alt="Airplane reconstruction from MESC-3D"></div>
+              <div class="media-cell"><img data-sync-image data-src="./assets/comparisons/r2n2/airplane/repstatediff.gif" src="./assets/comparisons/r2n2/airplane/repstatediff.gif" alt="Airplane reconstruction from RepStateDiff"></div>
+              <div class="media-cell"><img data-sync-image data-src="./assets/comparisons/r2n2/airplane/ground-truth.gif" src="./assets/comparisons/r2n2/airplane/ground-truth.gif" alt="Airplane ground truth"></div>
+            </div>
+            <div class="comparison-row">
+              <div class="category-label">Car</div>
+              <div class="media-cell"><img src="./assets/comparisons/r2n2/car/input.png" alt="Car input image"></div>
+              <div class="media-cell"><img data-sync-image data-src="./assets/comparisons/r2n2/car/bdm.gif" src="./assets/comparisons/r2n2/car/bdm.gif" alt="Car reconstruction from BDM"></div>
+              <div class="media-cell"><img data-sync-image data-src="./assets/comparisons/r2n2/car/mesc3d.gif" src="./assets/comparisons/r2n2/car/mesc3d.gif" alt="Car reconstruction from MESC-3D"></div>
+              <div class="media-cell"><img data-sync-image data-src="./assets/comparisons/r2n2/car/repstatediff.gif" src="./assets/comparisons/r2n2/car/repstatediff.gif" alt="Car reconstruction from RepStateDiff"></div>
+              <div class="media-cell"><img data-sync-image data-src="./assets/comparisons/r2n2/car/ground-truth.gif" src="./assets/comparisons/r2n2/car/ground-truth.gif" alt="Car ground truth"></div>
+            </div>
+            <div class="comparison-row">
+              <div class="category-label">Chair</div>
+              <div class="media-cell"><img src="./assets/comparisons/r2n2/chair/input.png" alt="Chair input image"></div>
+              <div class="media-cell"><img data-sync-image data-src="./assets/comparisons/r2n2/chair/bdm.gif" src="./assets/comparisons/r2n2/chair/bdm.gif" alt="Chair reconstruction from BDM"></div>
+              <div class="media-cell"><img data-sync-image data-src="./assets/comparisons/r2n2/chair/mesc3d.gif" src="./assets/comparisons/r2n2/chair/mesc3d.gif" alt="Chair reconstruction from MESC-3D"></div>
+              <div class="media-cell"><img data-sync-image data-src="./assets/comparisons/r2n2/chair/repstatediff.gif" src="./assets/comparisons/r2n2/chair/repstatediff.gif" alt="Chair reconstruction from RepStateDiff"></div>
+              <div class="media-cell"><img data-sync-image data-src="./assets/comparisons/r2n2/chair/ground-truth.gif" src="./assets/comparisons/r2n2/chair/ground-truth.gif" alt="Chair ground truth"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="dataset-block" aria-labelledby="pix3d-title">
+          <div class="dataset-heading"><h3 id="pix3d-title">Pix3D</h3></div>
+          <div class="comparison-board">
+            <div class="comparison-column-head" aria-hidden="true"><span>Input</span><span>BDM</span><span>MESC-3D</span><span>RepStateDiff</span><span>Ground Truth</span></div>
+            <div class="comparison-row">
+              <div class="category-label">Chair</div>
+              <div class="media-cell"><img src="./assets/comparisons/pix3d/chair/input.png" alt="Pix3D chair input image"></div>
+              <div class="media-cell"><img data-sync-image data-src="./assets/comparisons/pix3d/chair/bdm.gif" src="./assets/comparisons/pix3d/chair/bdm.gif" alt="Pix3D chair reconstruction from BDM"></div>
+              <div class="media-cell"><img data-sync-image data-src="./assets/comparisons/pix3d/chair/mesc3d.gif" src="./assets/comparisons/pix3d/chair/mesc3d.gif" alt="Pix3D chair reconstruction from MESC-3D"></div>
+              <div class="media-cell"><img data-sync-image data-src="./assets/comparisons/pix3d/chair/repstatediff.gif" src="./assets/comparisons/pix3d/chair/repstatediff.gif" alt="Pix3D chair reconstruction from RepStateDiff"></div>
+              <div class="media-cell"><img data-sync-image data-src="./assets/comparisons/pix3d/chair/ground-truth.gif" src="./assets/comparisons/pix3d/chair/ground-truth.gif" alt="Pix3D chair ground truth"></div>
+            </div>
+            <div class="comparison-row">
+              <div class="category-label">Sofa</div>
+              <div class="media-cell"><img src="./assets/comparisons/pix3d/sofa/input.png" alt="Pix3D sofa input image"></div>
+              <div class="media-cell"><img data-sync-image data-src="./assets/comparisons/pix3d/sofa/bdm.gif" src="./assets/comparisons/pix3d/sofa/bdm.gif" alt="Pix3D sofa reconstruction from BDM"></div>
+              <div class="media-cell"><img data-sync-image data-src="./assets/comparisons/pix3d/sofa/mesc3d.gif" src="./assets/comparisons/pix3d/sofa/mesc3d.gif" alt="Pix3D sofa reconstruction from MESC-3D"></div>
+              <div class="media-cell"><img data-sync-image data-src="./assets/comparisons/pix3d/sofa/repstatediff.gif" src="./assets/comparisons/pix3d/sofa/repstatediff.gif" alt="Pix3D sofa reconstruction from RepStateDiff"></div>
+              <div class="media-cell"><img data-sync-image data-src="./assets/comparisons/pix3d/sofa/ground-truth.gif" src="./assets/comparisons/pix3d/sofa/ground-truth.gif" alt="Pix3D sofa ground truth"></div>
+            </div>
+            <div class="comparison-row">
+              <div class="category-label">Table</div>
+              <div class="media-cell"><img src="./assets/comparisons/pix3d/table/input.png" alt="Pix3D table input image"></div>
+              <div class="media-cell"><img data-sync-image data-src="./assets/comparisons/pix3d/table/bdm.gif" src="./assets/comparisons/pix3d/table/bdm.gif" alt="Pix3D table reconstruction from BDM"></div>
+              <div class="media-cell"><img data-sync-image data-src="./assets/comparisons/pix3d/table/mesc3d.gif" src="./assets/comparisons/pix3d/table/mesc3d.gif" alt="Pix3D table reconstruction from MESC-3D"></div>
+              <div class="media-cell"><img data-sync-image data-src="./assets/comparisons/pix3d/table/repstatediff.gif" src="./assets/comparisons/pix3d/table/repstatediff.gif" alt="Pix3D table reconstruction from RepStateDiff"></div>
+              <div class="media-cell"><img data-sync-image data-src="./assets/comparisons/pix3d/table/ground-truth.gif" src="./assets/comparisons/pix3d/table/ground-truth.gif" alt="Pix3D table ground truth"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section table-section" aria-labelledby="table-one-title">
+      <div class="content-width">
+        <div class="section-heading">
+          <p class="section-kicker">Quantitative results</p>
+          <h2 id="table-one-title">ShapeNet-R2N2 reconstruction results</h2>
+        </div>
+        <figure class="paper-figure table-one">
+          <img src="./assets/paper-figures/table1.png" alt="Table 1 showing ShapeNet-R2N2 CD and F1 results for PC2, CCD-3DR, BDM, MESC-3D, PDM, and RepStateDiff">
+          <figcaption>Table 1. ShapeNet-R2N2 results on the three primary categories. CD is multiplied by 10<sup>3</sup>; lower CD and higher F1 are better.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="section visualization-section" aria-label="Additional visualizations">
+      <div class="content-width">
+        <div class="section-heading">
+          <p class="section-kicker">Additional visualizations</p>
+        </div>
+        <div class="visualization-grid">
+          <figure class="pdf-figure">
+            <a class="pdf-link" href="./assets/visualizations/vis-r2n2.pdf" target="_blank" rel="noreferrer" aria-label="Open ShapeNet-R2N2 visualization PDF">
+              <img src="./assets/visualizations/vis-r2n2.png" alt="ShapeNet-R2N2 qualitative visualization">
+            </a>
+            <figcaption><strong>ShapeNet-R2N2.</strong> Qualitative reconstruction comparisons across data regimes.</figcaption>
+          </figure>
+          <figure class="pdf-figure">
+            <a class="pdf-link" href="./assets/visualizations/vis-pix3d.pdf" target="_blank" rel="noreferrer" aria-label="Open Pix3D visualization PDF">
+              <img src="./assets/visualizations/vis-pix3d.png" alt="Pix3D qualitative visualization">
+            </a>
+            <figcaption><strong>Pix3D.</strong> Real-image reconstruction comparisons.</figcaption>
+          </figure>
+          <figure class="pdf-figure">
+            <a class="pdf-link" href="./assets/visualizations/vis-co3d.pdf" target="_blank" rel="noreferrer" aria-label="Open CO3Dv2 visualization PDF">
+              <img src="./assets/visualizations/vis-co3d.png" alt="CO3D qualitative visualization">
+            </a>
+            <figcaption><strong>CO3Dv2.</strong> Additional category-level visual results.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer"><div class="content-width footer-inner"><span>RepStateDiff</span><a href="#top">Back to top</a></div></footer>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="./site.js"></script>
+</body>
+</html>
