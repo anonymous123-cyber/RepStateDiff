@@ -127,10 +127,73 @@
           <p class="section-kicker">Quantitative results</p>
           <h2 id="table-one-title">ShapeNet-R2N2 reconstruction results</h2>
         </div>
-        <figure class="paper-figure table-one">
-          <img src="./assets/paper-figures/table1.png" alt="Table 1 showing ShapeNet-R2N2 CD and F1 results for PC2, CCD-3DR, BDM, MESC-3D, PDM, and RepStateDiff">
-          <figcaption>Table 1. ShapeNet-R2N2 results on the three primary categories. CD is multiplied by 10<sup>3</sup>; lower CD and higher F1 are better.</figcaption>
-        </figure>
+        <div class="table-scroll" role="region" aria-label="Table 1 ShapeNet-R2N2 quantitative comparison" tabindex="0">
+          <table class="results-table">
+            <thead>
+              <tr>
+                <th class="method-head" rowspan="3" scope="col">Method</th>
+                <th class="group-head" colspan="8" scope="colgroup">Chair</th>
+                <th class="group-head" colspan="8" scope="colgroup">Airplane</th>
+                <th class="group-head" colspan="8" scope="colgroup">Car</th>
+              </tr>
+              <tr>
+                <th colspan="2" scope="colgroup">1%</th><th colspan="2" scope="colgroup">10%</th><th colspan="2" scope="colgroup">50%</th><th colspan="2" scope="colgroup">100%</th>
+                <th colspan="2" scope="colgroup">1%</th><th colspan="2" scope="colgroup">10%</th><th colspan="2" scope="colgroup">50%</th><th colspan="2" scope="colgroup">100%</th>
+                <th colspan="2" scope="colgroup">1%</th><th colspan="2" scope="colgroup">10%</th><th colspan="2" scope="colgroup">50%</th><th colspan="2" scope="colgroup">100%</th>
+              </tr>
+              <tr>
+                <th scope="col">CD</th><th scope="col">F1</th><th scope="col">CD</th><th scope="col">F1</th><th scope="col">CD</th><th scope="col">F1</th><th scope="col">CD</th><th scope="col">F1</th>
+                <th scope="col">CD</th><th scope="col">F1</th><th scope="col">CD</th><th scope="col">F1</th><th scope="col">CD</th><th scope="col">F1</th><th scope="col">CD</th><th scope="col">F1</th>
+                <th scope="col">CD</th><th scope="col">F1</th><th scope="col">CD</th><th scope="col">F1</th><th scope="col">CD</th><th scope="col">F1</th><th scope="col">CD</th><th scope="col">F1</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">PC<sup>2</sup> <span class="venue">(CVPR 23)</span></th>
+                <td>108.61</td><td>0.381</td><td>97.25</td><td>0.393</td><td>73.58</td><td>0.437</td><td>65.57</td><td>0.464</td>
+                <td>117.09</td><td>0.579</td><td>88.00</td><td>0.605</td><td>76.39</td><td>0.628</td><td>65.97</td><td>0.655</td>
+                <td>66.34</td><td>0.509</td><td>64.99</td><td>0.524</td><td>62.59</td><td>0.542</td><td>64.36</td><td>0.547</td>
+              </tr>
+              <tr>
+                <th scope="row">CCD-3DR <span class="venue">(arXiv 23)</span></th>
+                <td>--</td><td>--</td><td>89.79</td><td>0.418</td><td class="second">63.13</td><td class="second">0.474</td><td class="second">58.47</td><td class="second">0.498</td>
+                <td>--</td><td>--</td><td>81.29</td><td>0.612</td><td>72.46</td><td>0.635</td><td>62.77</td><td>0.651</td>
+                <td>--</td><td>--</td><td>63.13</td><td>0.531</td><td>62.25</td><td>0.550</td><td>61.88</td><td>0.562</td>
+              </tr>
+              <tr>
+                <th scope="row">BDM-M <span class="venue">(CVPR 24)</span></th>
+                <td>107.66</td><td>0.382</td><td>94.94</td><td>0.395</td><td>71.56</td><td>0.446</td><td>64.48</td><td>0.468</td>
+                <td>117.42</td><td>0.580</td><td>87.75</td><td>0.604</td><td>73.19</td><td>0.629</td><td>65.16</td><td>0.653</td>
+                <td>66.56</td><td>0.509</td><td>63.53</td><td>0.524</td><td>60.71</td><td>0.549</td><td>64.16</td><td>0.554</td>
+              </tr>
+              <tr>
+                <th scope="row">BDM-B <span class="venue">(CVPR 24)</span></th>
+                <td class="second">107.64</td><td class="second">0.3914</td><td>94.67</td><td>0.410</td><td>69.99</td><td>0.463</td><td>64.21</td><td>0.485</td>
+                <td>115.10</td><td class="second">0.5878</td><td>83.62</td><td>0.612</td><td>68.66</td><td>0.641</td><td>59.04</td><td>0.660</td>
+                <td>65.27</td><td class="second">0.5188</td><td>60.48</td><td>0.539</td><td>62.58</td><td>0.554</td><td>65.85</td><td>0.559</td>
+              </tr>
+              <tr>
+                <th scope="row">MESC-3D <span class="venue">(CVPR 25)</span></th>
+                <td>192.32</td><td>0.2444</td><td>101.51</td><td>0.381</td><td>73.47</td><td>0.427</td><td>65.69</td><td>0.458</td>
+                <td class="best">87.77</td><td>0.5013</td><td>74.31</td><td>0.611</td><td>51.28</td><td>0.619</td><td>50.54</td><td>0.714</td>
+                <td>70.32</td><td>0.4347</td><td>56.28</td><td>0.522</td><td class="best">44.48</td><td>0.532</td><td>51.99</td><td>0.602</td>
+              </tr>
+              <tr>
+                <th scope="row">PDM <span class="venue">(ECCV 26)</span></th>
+                <td>115.43</td><td>0.3702</td><td class="second">82.41</td><td class="second">0.419</td><td>68.85</td><td>0.465</td><td>62.14</td><td>0.488</td>
+                <td>92.63</td><td>0.5619</td><td class="second">60.64</td><td class="second">0.614</td><td class="second">50.14</td><td class="second">0.663</td><td class="second">48.66</td><td class="second">0.719</td>
+                <td class="best">61.58</td><td>0.5084</td><td class="second">55.23</td><td class="second">0.542</td><td>55.53</td><td class="second">0.558</td><td class="second">51.54</td><td class="second">0.607</td>
+              </tr>
+              <tr class="ours-row">
+                <th scope="row">RepStateDiff (Ours)</th>
+                <td class="best">97.76</td><td class="best">0.405</td><td class="best">64.96</td><td class="best">0.481</td><td class="best">50.50</td><td class="best">0.525</td><td class="best">46.38</td><td class="best">0.541</td>
+                <td>92.72</td><td class="best">0.599</td><td class="best">50.66</td><td class="best">0.691</td><td class="best">40.54</td><td class="best">0.732</td><td class="best">37.55</td><td class="best">0.743</td>
+                <td class="second">62.53</td><td class="best">0.519</td><td class="best">53.42</td><td class="best">0.575</td><td class="second">50.84</td><td class="best">0.610</td><td class="best">50.11</td><td class="best">0.618</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="table-note"><strong>Table 1.</strong> ShapeNet-R2N2 results on the three primary categories. CD is multiplied by 10<sup>3</sup>; lower CD and higher F1 are better. Bold marks the best value and underlining marks the second-best value within each metric column. A dash indicates an unavailable baseline result.</p>
       </div>
     </section>
 
