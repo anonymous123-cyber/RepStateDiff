@@ -40,28 +40,6 @@
       </div>
     </section>
 
-    <section class="section overview-section" id="overview" aria-labelledby="overview-title" data-reveal>
-      <div class="narrow-width">
-        <p class="section-kicker">Overview</p>
-        <h2 id="overview-title">Representation guidance for state-evolution denoising</h2>
-        <p class="lead">Single-view 3D reconstruction seeks to recover complete object geometry from a single RGB image, yet remains inherently ambiguous because the observation reveals only a partial, viewpoint-dependent surface. Diffusion models offer a flexible generative formulation for this task, but point-cloud denoising requires a coherent global shape hypothesis that can be selectively updated with local image evidence.</p>
-        <p>To address this challenge, we introduce <strong>RepStateDiff</strong>, a representation-guided conditional diffusion framework that formulates reconstruction as state-evolution denoising. By separating persistent shape retention from evidence-driven state updates, RepStateDiff preserves global structure while refining local geometry with image-aligned cues. It aligns frozen visual features with noisy 3D points and propagates hierarchical tokens through StateEvo, a linear-time sequence mixer; intermediate representation alignment and internal guidance further couple visual semantics to denoising.</p>
-        <p>On ShapeNet-R2N2 and Pix3D, RepStateDiff achieves the strongest F1-scores across most evaluated settings and remains robust even with merely 1% of training data. On the three primary ShapeNet-R2N2 categories at 10% training data, it improves mean CD/F1 over PDM from 66.09/0.525 to 56.34/0.582, while PDM retains faster inference.</p>
-      </div>
-    </section>
-
-    <section class="section figure-section" aria-labelledby="figure-one-title" data-reveal>
-      <div class="content-width">
-        <div class="section-heading">
-          <h2 id="figure-one-title">Quality and efficiency under data scarcity</h2>
-        </div>
-        <figure class="paper-figure figure-one">
-          <img loading="lazy" src="./assets/paper-figures/figure1.png" alt="Quality and efficiency comparison of point-cloud reconstruction methods on ShapeNet-R2N2">
-          <figcaption>Figure 1. Absolute quality--efficiency comparison on ShapeNet-R2N2 with 10% training data. RepStateDiff is highlighted in red.</figcaption>
-        </figure>
-      </div>
-    </section>
-
     <section class="visual-band" id="qualitative" aria-label="Qualitative reconstruction" data-reveal>
       <div class="content-width">
         <div class="section-heading section-heading-row">
@@ -131,6 +109,28 @@
             </div>
           </div>
         </div>
+      </div>
+    </section>
+
+    <section class="section overview-section" id="overview" aria-labelledby="overview-title" data-reveal>
+      <div class="narrow-width">
+        <p class="section-kicker">Overview</p>
+        <h2 id="overview-title">Representation guidance for state-evolution denoising</h2>
+        <p class="lead">Single-view 3D reconstruction seeks to recover complete object geometry from a single RGB image, yet remains inherently ambiguous because the observation reveals only a partial, viewpoint-dependent surface. Diffusion models offer a flexible generative formulation for this task, but point-cloud denoising requires a coherent global shape hypothesis that can be selectively updated with local image evidence.</p>
+        <p>To address this challenge, we introduce <strong>RepStateDiff</strong>, a representation-guided conditional diffusion framework that formulates reconstruction as state-evolution denoising. By separating persistent shape retention from evidence-driven state updates, RepStateDiff preserves global structure while refining local geometry with image-aligned cues. It aligns frozen visual features with noisy 3D points and propagates hierarchical tokens through StateEvo, a linear-time sequence mixer; intermediate representation alignment and internal guidance further couple visual semantics to denoising.</p>
+        <p>On ShapeNet-R2N2 and Pix3D, RepStateDiff achieves the strongest F1-scores across most evaluated settings and remains robust even with merely 1% of training data. On the three primary ShapeNet-R2N2 categories at 10% training data, it improves mean CD/F1 over PDM from 66.09/0.525 to 56.34/0.582, while PDM retains faster inference.</p>
+      </div>
+    </section>
+
+    <section class="section figure-section" aria-labelledby="figure-one-title" data-reveal>
+      <div class="content-width">
+        <div class="section-heading">
+          <h2 id="figure-one-title">Quality and efficiency under data scarcity</h2>
+        </div>
+        <figure class="paper-figure figure-one">
+          <img loading="lazy" src="./assets/paper-figures/figure1.png" alt="Quality and efficiency comparison of point-cloud reconstruction methods on ShapeNet-R2N2">
+          <figcaption>Figure 1. Absolute quality--efficiency comparison on ShapeNet-R2N2 with 10% training data. RepStateDiff is highlighted in red.</figcaption>
+        </figure>
       </div>
     </section>
 

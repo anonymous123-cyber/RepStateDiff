@@ -100,7 +100,7 @@ button:focus-visible,
 .site-nav a.is-active { color: var(--accent-deep); }
 
 .hero {
-  padding: 66px 0 74px;
+  padding: 66px 0 38px;
   background: var(--canvas);
 }
 
@@ -170,7 +170,7 @@ h1 {
 .section { padding: 88px 0 96px; background: var(--paper); }
 .overview-section { padding-top: 82px; }
 .figure-section { padding-top: 24px; }
-.visual-band { padding: 82px 0 92px; background: var(--paper); }
+.visual-band { padding: 36px 0 92px; background: var(--paper); }
 .visualization-section { background: var(--canvas); }
 
 .narrow-width { width: min(calc(100% - 64px), var(--narrow)); margin: 0 auto; }
@@ -370,7 +370,7 @@ figcaption {
   .wordmark { font-size: 1.12rem; }
   .site-nav { width: 100%; justify-content: space-between; gap: 10px; font-size: 0.78rem; }
   .site-nav a { padding: 5px 0; }
-  .hero { padding: 40px 0 48px; }
+  .hero { padding: 40px 0 32px; }
   .hero-copy { max-width: 620px; }
   .eyebrow { margin-bottom: 11px; font-size: 0.7rem; }
   h1 { margin-bottom: 13px; font-size: 2.75rem; }
@@ -378,7 +378,7 @@ figcaption {
   .section { padding: 66px 0 72px; }
   .overview-section { padding-top: 64px; }
   .figure-section { padding-top: 8px; }
-  .visual-band { padding: 64px 0 72px; }
+  .visual-band { padding: 40px 0 72px; }
   .narrow-width { width: min(calc(100% - 36px), var(--narrow)); }
   .section h2 { margin-bottom: 18px; font-size: 2rem; }
   .section-heading { margin-bottom: 24px; }
